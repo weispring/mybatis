@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chun.proxy.mapper.SubjectUserTypeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chun.proxy.entity.SubjectUserType">
+        <id column="id" property="id"/>
+        <result column="app_id" property="appId"/>
+        <result column="subject_id" property="subjectId"/>
+        <result column="user_type_id" property="userTypeId"/>
+        <result column="created_by" property="createdBy"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="updated_by" property="updatedBy"/>
+        <result column="updated_time" property="updatedTime"/>
+    </resultMap>
+
+    <select id="save" resultType="java.lang.Integer">
+        insert into subject_user_type
+               (id,app_id,subject_id,user_type_id,created_by,created_time,updated_by,updated_time)
+        values( UUID_SHORT(), #{param.appId},#{param.subjectId},#{param.userTypeId},6,1,1,1)
+    </select>
+
+    <select id="saveInterface" resultType="java.lang.Integer">
+        insert into subject_user_type
+        (id,app_id,subject_id,user_type_id,created_by,created_time,updated_by,updated_time)
+        values(UUID_SHORT(), #{param.appId},#{param.subjectId},#{param.userTypeId},6,1,1,1)
+    </select>
+
+    <select id="saveXml" resultType="java.lang.Integer">
+        insert into subject_user_type
+        (id,app_id,subject_id,user_type_id,created_by,created_time,updated_by,updated_time)
+        values(UUID_SHORT(), #{appId},#{subjectId},#{userTypeId},6,1,1,1)
+    </select>
+</mapper>
