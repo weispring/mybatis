@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,10 +43,37 @@ public class TestControl {
     }
 
 
+    //
 
     @PostMapping(value = "/testdocker")
     public String  test(HttpServletRequest request){
         log.info("入參：{}",request);
         return "测试docker";
+    }
+
+    @GetMapping(value = "/teststart")
+    public String  start(HttpServletRequest request){
+        Thread.currentThread();
+        log.info("入參：{}",request);
+        if ("true".equals(request.getParameter("ex"))){
+            throw new NullPointerException("测试异常");
+        }
+        return "测试docker";
+    }
+
+    public static void main(String[] args) {
+
+        String a = "1";
+        String b = "3";
+        String c = "4";
+
+        System.out.println(a+b==c);
+        a.equals("");
+
+
+        System.out.println(c=="4");
+
+
+
     }
 }
