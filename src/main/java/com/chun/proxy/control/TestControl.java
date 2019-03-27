@@ -8,9 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.Random;
 
 /**
@@ -76,4 +80,34 @@ public class TestControl {
 
 
     }
+
+
+    /**
+     * 获取图片
+     * @param request
+     * @param response
+     * @throws Exception
+     */
+    @RequestMapping(value = "/api/open/terminal/self/img")
+    public void img(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        File file = new File("C:\\Users\\lixia\\Desktop\\mryjywhh\\天安门.jpg");
+        FileInputStream fis = new FileInputStream(file);
+
+        //http头部属性设置
+        response.setDateHeader("Expires", 0);
+        response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+        response.addHeader("Cache-Control", "post-check=0, pre-check=0");
+        response.setHeader("Pragma", "no-cache");
+        response.setContentType("image/jpeg");
+        response.setCharacterEncoding("utf-8");
+
+        byte[] bytes = new byte[1024];
+        int r;
+        while ((r=fis.read(bytes)) > -1){
+            response.getOutputStream().write(bytes,0,r);
+        }
+        response.getOutputStream().flush();
+    }
+
+
 }
