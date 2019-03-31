@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
  **/
 @MapperScan("com.chun.proxy.mapper.**")
 //@ImportResource("mybatis-config.xml")
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@SpringBootApplication//(exclude = {DataSourceAutoConfiguration.class})
 public class Application {
 
         public static void main(String[] args) {

@@ -16,7 +16,7 @@ import java.util.Set;
 @Slf4j
 public class ApplicationContextUtil implements ApplicationContextAware {
 
-    private ApplicationContext context;
+    private static ApplicationContext context;
 
     /**
      * 设置上下文
@@ -32,7 +32,7 @@ public class ApplicationContextUtil implements ApplicationContextAware {
     /**
      * 获取bean
      */
-    public <T> T getBean(Class<T> tClass){
+    public static  <T> T getBean(Class<T> tClass){
         return context.getBean(tClass);
     }
 
