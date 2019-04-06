@@ -124,6 +124,27 @@ public class TestControl {
      * @return
      * @throws Exception
      */
+    @RequestMapping(value = "/testFile")
+    public void  testFile(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        String path = request.getParameter("path");
+        log.info("入参path:{}",path);
+        File file = new File(path);
+        FileInputStream fis = new FileInputStream(file);
+        byte[] bytes = new byte[1024];
+        int r;
+        while ((r=fis.read(bytes)) > -1){
+            response.getOutputStream().write(bytes,0,r);
+        }
+        response.getOutputStream().flush();
+    }
+
+
+
+    /**
+     * 获取请求参数
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "/testHttp")
     public String  testHttp() throws Exception{
         HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
