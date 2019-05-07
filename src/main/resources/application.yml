@@ -1,17 +1,10 @@
-
-
-
 spring:
   # 数据库配置
-  profiles:
-    include:
-      - mybatisplus
   datasource:
-    jmx-enabled: false
-    name: moses_zoneconf
-    url: jdbc:mysql://mysql-dev:3306/moses_zoneconf?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
-    username: lixc
-    password: 123456
+    name: test
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    username: root
+    password:
     type: org.apache.tomcat.jdbc.pool.DataSource
     driver-class-name: com.mysql.jdbc.Driver
     # 使用druid数据源
@@ -30,10 +23,6 @@ spring:
       max-open-prepared-statements: 20
       # encrypt password
       filters: config,stat,wall,log4j
-      connection-properties: "config.decrypt=true;config.decrypt.key=${app.datasource.druid.public-key};druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000"
+      connection-properties: "config.decrypt=true;druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000"
       use-global-data-source-stat: true
-
-logging:
-  level:
-    com.chun.proxy: debug
 

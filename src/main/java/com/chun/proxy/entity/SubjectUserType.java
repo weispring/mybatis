@@ -1,10 +1,8 @@
 package com.chun.proxy.entity;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableName;
-
-import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * <p>
@@ -14,49 +12,50 @@ import java.io.Serializable;
  * @author zhangbin
  * @since 2017-04-18
  */
-@TableName("subject_user_type")
-public class SubjectUserType extends Model<SubjectUserType> {
+@Table(name="subject_user_type")
+public class SubjectUserType {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * id
      */
+    @Id
     private Long id;
     /**
      * 平台ID
      */
-    @TableField("app_id")
+    @Column(name = "app_id")
     private Long appId;
     /**
      * 专题ID
      */
-    @TableField("subject_id")
+    @Column(name="subject_id")
     private Long subjectId;
     /**
      * 用户类型
      */
-    @TableField("user_type_id")
+    @Column(name="user_type_id")
     private Long userTypeId;
     /**
      * 创建人
      */
-    @TableField("created_by")
+    @Column(name="created_by")
     private Long createdBy;
     /**
      * 创建时间
      */
-    @TableField("created_time")
+    @Column(name="created_time")
     private Long createdTime;
     /**
      * 更新人
      */
-    @TableField("updated_by")
+    @Column(name="updated_by")
     private Long updatedBy;
     /**
      * 更新时间
      */
-    @TableField("updated_time")
+    @Column(name="updated_time")
     private Long updatedTime;
 
 
@@ -124,9 +123,5 @@ public class SubjectUserType extends Model<SubjectUserType> {
         this.updatedTime = updatedTime;
     }
 
-    @Override
-    protected Serializable pkVal() {
-        return this.id;
-    }
 
 }
