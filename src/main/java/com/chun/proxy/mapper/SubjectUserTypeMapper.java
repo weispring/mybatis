@@ -1,6 +1,7 @@
 package com.chun.proxy.mapper;
 
-import com.baomidou.mybatisplus.mapper.BaseMapper;
+//import com.baomidou.mybatisplus.mapper.BaseMapper;
+
 import com.chun.proxy.entity.SubjectUserType;
 import org.apache.ibatis.annotations.Param;
 
@@ -14,6 +15,7 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface SubjectUserTypeMapper //extends BaseMapper<SubjectUserType>
  {
+
 
     Integer save(@Param("param") SubjectUserType userType);
 
