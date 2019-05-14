@@ -54,7 +54,7 @@ public class LogAspect {
             returning = "ret",
             pointcut = "webLog()"
     )
-    public void doAfterReturning(Object ret) throws Throwable {
+    public void doAfterReturning(Object ret) {
         log.debug("日志后置:{}",ret);
     }
 

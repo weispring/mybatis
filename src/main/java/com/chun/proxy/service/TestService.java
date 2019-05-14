@@ -31,6 +31,7 @@ public class TestService {
 
     public int testXml(SubjectUserType userType){
         SqlSession sqlSession = sqlSessionFactory.openSession();
+
         int result = sqlSession.insert("com.chun.proxy.mapper.SubjectUserTypeMapper.saveXml",userType);
         sqlSession.commit();
         sqlSession.close();
@@ -38,6 +39,8 @@ public class TestService {
     }
 
     public void test(SubjectUserType userType){
+
+       // mapper.selectOne(userType);
 
         environment.getProperty("spring.datasource.name");
 

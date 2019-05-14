@@ -4,10 +4,15 @@ import com.chun.proxy.entity.SubjectUserType;
 import com.chun.proxy.proxy.ITestInterfaceProxy;
 import com.chun.proxy.proxy.Mock;
 import com.chun.proxy.service.TestService;
+import com.chun.proxy.util.ApplicationContextUtil;
 import com.chun.proxy.util.WebUtil;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.weaver.ast.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.support.BeanDefinitionBuilder;
+import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,6 +45,25 @@ public class TestControl {
     @PostMapping(value = "/test")
     public void  proxy(HttpServletRequest request){
 
+        BeanDefinitionRegistry registry = (BeanDefinitionRegistry)  ApplicationContextUtil.context.getAutowireCapableBeanFactory();
+
+            BeanDefinitionBuilder builder = BeanDefinitionBuilder.rootBeanDefinition(TestBean.class);
+
+            builder.addPropertyValue("aaa","0909");
+
+            BeanDefinition def = builder.getBeanDefinition();
+            registry.registerBeanDefinition("beanChun", def);
+
+
+
+
+       String[]  names = ApplicationContextUtil.getBeanNames(TestBean.class);
+
+
+        String[]  names111 = ApplicationContextUtil.getBeanNames(TestBean.class);
+        TestBean bb = new TestBean();
+        bb.pageHelper();
+        String[]  names1 = ApplicationContextUtil.getBeanNames(Xbean.class);
         log.info("IP地址 ：{}",request.getHeader("x-forwarded-for"));
         log.info("IP地址 ：{}",request.getRemoteAddr());
         HttpHeaders httpHeaders = null;
@@ -157,10 +181,9 @@ public class TestControl {
 
     /**
      * 测试 jdk 代理
-     * @throws Exception
      */
     @RequestMapping(value = "/testJdkProxy")
-    public String  testJdkProxy() throws Exception{
+    public String  testJdkProxy() {
         Mock.wrapper(testInterfaceProxy).thanks();
         return "测试docker";
     }

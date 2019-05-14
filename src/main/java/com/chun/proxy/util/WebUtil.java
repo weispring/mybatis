@@ -23,7 +23,7 @@ public final class WebUtil {
     public WebUtil() {
     }
 
-    public static String getRequestBodyStr(HttpServletRequest request) throws Exception{
+    public static String getRequestBodyStr(HttpServletRequest request) {
         String result = "";
         try {
             ByteArrayOutputStream outSteam = new ByteArrayOutputStream();
@@ -72,7 +72,7 @@ public final class WebUtil {
 
             while(var3.hasNext()) {
                 String key = (String)var3.next();
-                changeMap.put(key, ((String[])requestMap.get(key))[0]);
+                changeMap.put(key, requestMap.get(key)[0]);
             }
             log.info("getRequestParams ： {}",changeMap);
             return changeMap;

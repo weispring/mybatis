@@ -12,7 +12,8 @@ import org.apache.ibatis.annotations.Param;
  * @author zhangbin
  * @since 2017-04-18
  */
-public interface SubjectUserTypeMapper extends BaseMapper<SubjectUserType> {
+public interface SubjectUserTypeMapper //extends BaseMapper<SubjectUserType>
+ {
 
     Integer save(@Param("param") SubjectUserType userType);
 

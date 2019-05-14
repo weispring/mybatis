@@ -2,6 +2,7 @@ package com.chun.proxy.entity;
 
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 
 import java.io.Serializable;
@@ -22,6 +23,7 @@ public class SubjectUserType extends Model<SubjectUserType> {
     /**
      * id
      */
+    @TableId(value = "id")
     private Long id;
     /**
      * 平台ID

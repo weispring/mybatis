@@ -187,9 +187,6 @@ public class Mock {
      */
     private static boolean customMethod(Method method){
         List<String> objectMethods = Arrays.asList("toString","equals","hashCode");
-        if (objectMethods.contains(method.getName())){
-            return true;
-        }
-        return false;
+        return objectMethods.contains(method.getName());
     }
 }

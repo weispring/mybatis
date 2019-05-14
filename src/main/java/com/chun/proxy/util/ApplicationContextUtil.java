@@ -16,7 +16,7 @@ import java.util.Set;
 @Slf4j
 public class ApplicationContextUtil implements ApplicationContextAware {
 
-    private static ApplicationContext context;
+    public static ApplicationContext context;
 
     /**
      * 设置上下文
@@ -25,7 +25,7 @@ public class ApplicationContextUtil implements ApplicationContextAware {
      */
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.context = applicationContext;
+        context = applicationContext;
     }
 
 
@@ -34,6 +34,11 @@ public class ApplicationContextUtil implements ApplicationContextAware {
      */
     public static  <T> T getBean(Class<T> tClass){
         return context.getBean(tClass);
+    }
+
+
+    public static  <T> String[]  getBeanNames(Class<T> tClass){
+        return context.getBeanNamesForType(tClass);
     }
 
 
