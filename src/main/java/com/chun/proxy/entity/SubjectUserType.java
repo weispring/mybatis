@@ -1,6 +1,6 @@
 package com.chun.proxy.entity;
 
-import com.baomidou.mybatisplus.annotations.TableId;
+//import com.baomidou.mybatisplus.annotations.TableId;
 
 import javax.persistence.Column;
 import javax.persistence.Id;

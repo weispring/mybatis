@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * Created by lixianchun on 2018/7/11.
  **/
-//@MapperScan("com.chun.proxy.mapper.**")
+@MapperScan("com.chun.proxy.mapper.**")
 //@ImportResource("mybatis-config.xml")
 //@SpringBootApplication//(exclude = {DataSourceAutoConfiguration.class})
 //@ImportResource("applicationContext-spring.xml")
@@ -20,8 +20,8 @@ public class Application {
 
         public static void main(String[] args) throws Exception {
 
-            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsReader("conf/mybatis-config.xml"));
-            //SpringApplication.run(Application.class, args);
+            //SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsReader("conf/mybatis-config.xml"));
+            SpringApplication.run(Application.class, args);
         }
 
      //            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsReader("conf/mybatis-config.xml"));

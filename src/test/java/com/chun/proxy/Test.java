@@ -1,6 +1,5 @@
 package com.chun.proxy;
 
-import com.chun.proxy.mapper.GoodMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +15,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringBootTest
 @ActiveProfiles({""})
 public class Test {
-
-
-    @Autowired
-    private GoodMapper goodMapper;
 
 
     @org.junit.Test
