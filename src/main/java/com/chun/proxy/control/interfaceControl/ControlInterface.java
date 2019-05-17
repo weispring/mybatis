@@ -1,5 +1,6 @@
 package com.chun.proxy.control.interfaceControl;
 
+import com.chun.proxy.control.request.Body;
 import com.chun.proxy.control.request.Req;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,6 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface ControlInterface {
 
     @PostMapping(value = "/rpc/test/interface")
-    String test(@RequestBody Req req);
+    String test(@RequestBody Body req);
 
 }
