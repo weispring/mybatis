@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -20,7 +21,7 @@ import java.io.IOException;
 @RestController
 public class TestInterfaceControl implements ControlInterface {
     @Override
-    public String test(@RequestBody Body req) {
+    public String test(@Valid @RequestBody Body req) {
         if ("1".equals(req.getId())){
             throw new RuntimeException("runtime");
         }else if ("2".equals(req.getId())){

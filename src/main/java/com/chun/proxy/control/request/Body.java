@@ -1,5 +1,6 @@
 package com.chun.proxy.control.request;
 
+import com.chun.proxy.control.validator.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +18,7 @@ import java.io.Serializable;
 @Setter
 public class Body implements Serializable {
 
+    @NotNull
     private String id;
 
 }
