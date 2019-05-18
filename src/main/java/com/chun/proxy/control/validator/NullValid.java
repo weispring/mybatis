@@ -12,6 +12,7 @@ import javax.validation.ConstraintValidatorContext;
  */
 @Slf4j
 public class NullValid implements ConstraintValidator<NotNull,Object> {
+
     @Override
     public void initialize(NotNull constraintAnnotation) {
 

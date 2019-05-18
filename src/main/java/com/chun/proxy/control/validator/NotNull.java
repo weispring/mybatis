@@ -10,6 +10,13 @@ import java.lang.annotation.*;
 @Constraint(validatedBy =NullValid.class )
 public @interface NotNull {
 
+    /**
+     * 不需要这个
+     *    <groupId>org.hibernate.validator</groupId>
+     <artifactId>hibernate-validator</artifactId>
+     <version>6.0.10.Final</version>
+     * @return
+     */
     String message() default "{javax.validation.constraints.NotNull.message}";
 
     Class<?>[] groups() default {};
