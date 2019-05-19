@@ -41,12 +41,13 @@ public class LogAspect {
         aspectLogThreadLocal.remove();
     }
 
-    @Pointcut("execution( * com..control.*.*(..))")
+    @Pointcut("execution( * com.chun.proxy.control..*.*(..))")
     public void webLog() {
     }
 
     @Before("webLog()")
     public void doBefore(JoinPoint joinPoint) {
+        log.info("日志前置:");
         log.debug("日志前置:");
     }
 
@@ -55,7 +56,7 @@ public class LogAspect {
             pointcut = "webLog()"
     )
     public void doAfterReturning(Object ret) {
-        log.debug("日志后置:{}",ret);
+        log.info("日志后置:{}",ret);
     }
 
     @AfterThrowing(
@@ -63,8 +64,16 @@ public class LogAspect {
             pointcut = "webLog()"
     )
     public void doAfterThrowing(Throwable ex) {
+
         log.debug("抛出异常：{}",ex);
     }
+
+    /**
+     * 如果control实现了异常处理，则control抛出异常处理过程
+     * AfterThrowing control异常处理 AfterReturning
+     *
+     * 否则，AfterThrowing，全局异常处理
+     */
 
 
 
