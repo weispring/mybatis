@@ -1,5 +1,7 @@
 package com.chun.proxy;
 
+import com.chun.proxy.control.interfaceControl.AbstractTest;
+import com.chun.proxy.control.interfaceControl.Sub;
 import com.chun.proxy.entity.SubjectUserType;
 import com.chun.proxy.mapper.SubjectUserTypeMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +24,11 @@ import java.util.Random;
 @Slf4j
 public class Main {
     public static void main(String[] args) throws Exception {
+
+        AbstractTest test = new AbstractTest();
+        Sub sub = (Sub) test;
+
+
       /*  Reader reader = Resources.getResourceAsReader("conf/mybatis-config.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
         reader.close();

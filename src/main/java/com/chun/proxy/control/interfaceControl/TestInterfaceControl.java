@@ -1,8 +1,13 @@
 package com.chun.proxy.control.interfaceControl;
 
+import com.chun.proxy.aop.AopService;
 import com.chun.proxy.control.request.Body;
 import com.chun.proxy.control.request.Req;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.aop.framework.AopContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,9 +21,19 @@ import java.io.IOException;
  * 接口control测试类
  */
 @RestController
+@Slf4j
 public class TestInterfaceControl implements ControlInterface {
+
+
+    @Autowired
+    private AopService aopService;
+
     @Override
     public String test(@Valid @RequestBody Body req) {
+        aopService.test();
+
+        //需要打开 expose-proxy true
+        ((TestInterfaceControl)AopContext.currentProxy()).test();
         if ("1".equals(req.getId())){
             throw new RuntimeException("runtime");
         }else if ("2".equals(req.getId())){
@@ -43,6 +58,12 @@ public class TestInterfaceControl implements ControlInterface {
         return "uuuuuuuuuuuu";
     }
 
+
+
+    @Async
+    public void test(){
+        log.info("测试AopContext.currentProxy();");
+    }
 
 /*
 

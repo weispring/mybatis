@@ -21,6 +21,6 @@ public class NullValid implements ConstraintValidator<NotNull,Object> {
     @Override
     public boolean isValid(Object o, ConstraintValidatorContext constraintValidatorContext) {
         log.info("validtor----------");
-        return false;
+        return true;
     }
 }
