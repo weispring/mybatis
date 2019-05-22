@@ -3,7 +3,7 @@ spring:
   datasource:
     jmx-enabled: false
     name: test
-    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=UTC
     username: root
     password:
     type: org.apache.tomcat.jdbc.pool.DataSource

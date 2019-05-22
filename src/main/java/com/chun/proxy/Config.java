@@ -28,8 +28,8 @@ public class Config {
 
     public static void main(String[] args) {// classpath:/,classpath:/config/,file:./,file:./config/
         File file = new File("file:./");
-
-
+        //CglibAopProxy
+        //org.mybatis.spring.SqlSessionFactoryBean
         System.out.println(file.getAbsolutePath() +":" +file.getPath()+":"+file.getParent());
     }
 }

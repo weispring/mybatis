@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.print.attribute.standard.ReferenceUriSchemesSupported;
 import java.lang.reflect.InvocationHandler;
@@ -38,6 +39,7 @@ public class TestService {
         return result;
     }
 
+    @Transactional
     public void test(SubjectUserType userType){
 
        // mapper.selectOne(userType);
